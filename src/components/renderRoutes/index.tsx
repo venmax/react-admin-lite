@@ -14,7 +14,7 @@ import AsyncComponent from '@components/asyncComponent';
 import LoginPage from '@views/login';
 import {Route404} from "./routeStatus";
 
-const history = createHashHistory();
+const history = process.env['NODE_ENV'] === 'dev' ? createHashHistory() : createBrowserHistory();
 
 interface RouteInterProps {
   path: string;

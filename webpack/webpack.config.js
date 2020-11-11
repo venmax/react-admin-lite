@@ -1,8 +1,11 @@
+"use strict";
+
 const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const isEnvProduction = ['production', 'test'].includes(process.env.NODE_ENV)
+
 module.exports = {
   entry: path.resolve(__dirname, '../src/index.tsx'),
   resolve: {
@@ -24,19 +27,14 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|mjs|jsx|ts|tsx)$/,
+        test: /\.(js|jsx|ts|tsx)$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
             cacheDirectory: true,
             cacheCompression: isEnvProduction,
-            compact: isEnvProduction,
-            presets: [
-              "@babel/preset-env",
-              "@babel/preset-react",
-              "@babel/preset-typescript",
-            ],
+            compact: isEnvProduction
           }
         }
       },

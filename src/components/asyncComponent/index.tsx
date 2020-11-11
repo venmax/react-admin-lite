@@ -27,7 +27,7 @@ const AsyncComponent: React.FC<IProps> = (props) => {
     } else {
       Comp = lazy(() => {
         return new Promise(resolve => {
-          setTimeout(() => resolve(import("../../../src" + componentInfo)), 100);
+          setTimeout(() => resolve(import("../../../src" + componentInfo + "/index")), 100);
         });
       });
     }

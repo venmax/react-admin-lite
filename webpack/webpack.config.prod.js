@@ -67,6 +67,11 @@ module.exports = Object.assign(baseConfig, {
   plugins: [
     // new bundleAnalyzer(),
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      "process.env": {
+        NODE_ENV: JSON.stringify("prod"),
+      },
+    }),
     new HtmlWebpackPlugin({
       filename: "index.html",
       inject: "body",

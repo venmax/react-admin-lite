@@ -33,6 +33,7 @@ export const asyncRouteConfig: RouteChild[] = [
   },
   {
     path: '/',
+    exact: true,
     redirect: '/dashboard',
     hideMenu: true
   },

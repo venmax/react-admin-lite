@@ -4,7 +4,7 @@ const webpack = require("webpack");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const baseConfig = require("./webpack.config");
-const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
+// const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
 const { module: _module } = baseConfig;
 
@@ -49,21 +49,23 @@ module.exports = Object.assign(baseConfig, {
     }),
     new webpack.DefinePlugin({
       "process.env": {
-        NODE_ENV: JSON.stringify("development"),
+        NODE_ENV: JSON.stringify("dev"),
       },
     }),
-    new ForkTsCheckerWebpackPlugin({
-      async: false,
-      eslint: {
-        files: "./src/**/*",
-      },
-    }),
+    // new ForkTsCheckerWebpackPlugin({
+    //   async: false,
+    //   eslint: {
+    //     files: "./src/**/*.{ts,tsx,js,jsx}",
+    //   },
+    // }),
   ],
   devServer: {
     open: true,
-    clientLogLevel: 'error',
+    hot: true,
+    disableHostCheck: true,   // That solved it
+    clientLogLevel: "error",
     contentBase: path.join(__dirname, "dist"),
     compress: true,
-    port: 9000
+    port: 9000,
   },
 });

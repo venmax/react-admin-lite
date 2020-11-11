@@ -5,12 +5,12 @@ interface PropsInterface {
   children: any
 }
 
-interface StateInterface {
+interface IStateInterface {
   hasError: boolean;
   error?: Error | null;
 }
 
-class ErrorBoundary extends Component<PropsInterface, StateInterface> {
+class ErrorBoundary extends Component<PropsInterface, IStateInterface> {
   state = { hasError: false };
 
   componentDidCatch(error: Error | null): void {
