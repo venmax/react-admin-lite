@@ -14,6 +14,7 @@ function _resolve(track) {
 
 module.exports = Object.assign(baseConfig, {
   mode: "development",
+  entry: ['react-hot-loader/patch', baseConfig.entry],
   output: {
     path: _resolve("public"),
     publicPath: "/",
